@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 
 const schema = z.object({
   title: z.string().min(3, "At least 3 characters"),
-  category: z.enum(["breakfast", "lunch", "dinner", "dessert"], {
+  category: z.enum(["breakfast", "lunch", "dinner", "dessert"] as const, {
     errorMap: () => ({ message: "Select a valid category" }),
   }),
   duration: z.coerce.number().min(1, "At least 1 minute").max(300, "At most 300 minutes"),
